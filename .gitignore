@@ -1,0 +1,30 @@
+node_modules/
+dist/
+coverage/
+.nyc_output/
+*.log
+.env
+.env.local
+.env.*.local
+
+# Build artifacts — committed at release time only via npm publish workflow
+scripts/*.js
+scripts/*.d.ts
+scripts/*.d.ts.map
+scripts/*.js.map
+
+# Keep the CLI entrypoint (it ships as-is, not compiled from src/)
+!scripts/modelfusion-cli.js
+
+# Playwright
+test-results/
+playwright-report/
+playwright/.cache/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo

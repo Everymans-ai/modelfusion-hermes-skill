@@ -1,0 +1,5 @@
+{
+  "prompt": "In two short paragraphs, compare REST and gRPC for service-to-service communication. Take a clear position on which is the better default for a 50-engineer SaaS company.",
+  "preset": "general",
+  "verify": true
+}

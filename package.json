@@ -1,0 +1,78 @@
+{
+  "name": "modelfusion-hermes-skill",
+  "version": "0.1.0",
+  "description": "Hermes Agent skill for the ModelFusion multi-model fusion API.",
+  "license": "Apache-2.0",
+  "author": "ModelFusion (https://modelfusion.ai)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Everymans-ai/modelfusion-hermes-skill.git"
+  },
+  "homepage": "https://modelfusion.ai",
+  "bugs": {
+    "url": "https://github.com/Everymans-ai/modelfusion-hermes-skill/issues"
+  },
+  "keywords": [
+    "hermes-agent",
+    "skill",
+    "skill-md",
+    "agentskills",
+    "modelfusion",
+    "llm",
+    "mixture-of-agents",
+    "moa",
+    "verification",
+    "fusion"
+  ],
+  "main": "scripts/index.js",
+  "types": "scripts/index.d.ts",
+  "files": [
+    "SKILL.md",
+    "scripts/**/*.js",
+    "scripts/**/*.d.ts",
+    "references/**/*.md",
+    "assets/**/*",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "bin": {
+    "modelfusion": "scripts/modelfusion-cli.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "rm -rf scripts/*.js scripts/*.d.ts scripts/*.map dist",
+    "lint": "eslint \"src/**/*.ts\" \"__tests__/**/*.ts\" \"e2e/**/*.ts\"",
+    "format": "prettier --write \"**/*.{ts,js,json,md}\"",
+    "test": "jest --config jest.config.cjs",
+    "test:watch": "jest --config jest.config.cjs --watch",
+    "test:coverage": "jest --config jest.config.cjs --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:contract": "playwright test --grep @live",
+    "typecheck": "tsc -p tsconfig.test.json --noEmit",
+    "prepack": "npm run clean && npm run build",
+    "verify": "npm run typecheck && npm run lint && npm run test",
+    "skill:validate": "node scripts/modelfusion-cli.js --help"
+  },
+  "dependencies": {
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.46.0",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.14.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "eslint": "^8.57.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.3.0",
+    "ts-jest": "^29.2.0",
+    "typescript": "^5.5.0"
+  },
+  "engines": {
+    "node": ">=18.17.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
