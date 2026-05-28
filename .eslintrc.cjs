@@ -28,5 +28,16 @@ module.exports = {
     "@typescript-eslint/await-thenable": "error",
     "no-console": ["warn", { allow: ["warn", "error"] }],
   },
+  overrides: [
+    {
+      files: ["__tests__/**/*.ts"],
+      rules: {
+        "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/no-unsafe-assignment": "off",
+        "@typescript-eslint/no-unsafe-member-access": "off",
+        "@typescript-eslint/require-await": "off",
+      },
+    },
+  ],
   ignorePatterns: ["scripts/**/*.js", "scripts/**/*.d.ts", "dist/", "coverage/", "node_modules/"],
 };
