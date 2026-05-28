@@ -1,6 +1,6 @@
 {
   "name": "modelfusion-hermes-skill",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Hermes Agent skill for the ModelFusion multi-model fusion API.",
   "license": "Apache-2.0",
   "author": "ModelFusion (https://modelfusion.ai)",
