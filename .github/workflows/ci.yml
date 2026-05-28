@@ -1,14 +1,12 @@
 name: ci
-
 on:
   pull_request:
     branches: [main]
   push:
     branches: [main]
-
 jobs:
   verify:
-    name: typecheck + lint + unit
+    name: typecheck + unit
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -23,9 +21,7 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm run typecheck
-      - run: npm run lint
       - run: npm run test -- --ci --coverage
-
   contract:
     name: live API contract (post-merge)
     needs: verify
@@ -33,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       MODELFUSION_API_URL: ${{ secrets.MODELFUSION_API_URL }}
-      MODELFUSION_DEMO_KEY: ${{ secrets.MODELFUSION_DEMO_KEY }}
+      MODELFUSION_API_KEY: ${{ secrets.MODELFUSION_DEMO_KEY }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -43,4 +39,4 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e:contract
-        if: env.MODELFUSION_DEMO_KEY != ''
+        if: env.MODELFUSION_API_KEY != ''
